@@ -71,8 +71,11 @@
 //                            // @"image1.png",
 //                            // @"image2.png",
 //                            nil]];
-    [manager setControllerLayout:[JPControllerLayout nesLayout]];
+    JPControllerLayout *layout = [JPControllerLayout nesLayout];
+    [layout addAccelerometer];
+    [manager setControllerLayout:layout];
     [manager setGameState:kJPGameStateMenu];
+//    [manager set]
 //    [manager addListener:self];
 }
 

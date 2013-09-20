@@ -20,6 +20,7 @@
     Player *player;
     AimCross *aimCross;
     GameControlState controlState;
+    float prevAccZ;
 }
 
 - (void)updateScore;

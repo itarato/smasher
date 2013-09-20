@@ -56,15 +56,11 @@ float gameSpeedModifier = kGameSpeedNormal;
         
         self->controlState = kGameControlStatePlayerControl;
         
-        [self setAccelerometerEnabled:YES];
+        self->prevAccZ = 0.0f;
         
         [self scheduleUpdate];
     }
     return self;
-}
-
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-    NSLog(@"Acceleration: %@", acceleration);
 }
 
 - (void)update:(ccTime)delta {
@@ -168,6 +164,15 @@ float gameSpeedModifier = kGameSpeedNormal;
         default:
             break;
     }
+}
+
+- (void)joypadDevice:(JPDevice *)device didAccelerate:(JPAcceleration)accel {
+    // NSLog(@"Acceleration %0.2f %0.2f %0.2f", accel.x, accel.y, accel.z);
+    if (fabsf(accel.z - self->prevAccZ) > 0.15f) {
+        [self shoot];
+    }
+//    NSLog(@"ACC: %f", fabsf(accel.z - self->prevAccZ));
+    self->prevAccZ = accel.z;
 }
 
 #pragma mark - Statics
