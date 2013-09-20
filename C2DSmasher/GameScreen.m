@@ -12,12 +12,21 @@
 #import "FlyingItem.h"
 #import "FoodItem.h"
 #import "EnemyItem.h"
+#import "ShootPath.h"
 
 #define kGameFlyingItemHitDistance 60.0f
 #define kGameSpeedSlow 0.3f
 #define kGameSpeedNormal 1.0f
 
 float gameSpeedModifier = kGameSpeedNormal;
+
+
+@interface GameScreen ()
+
+- (void)findEnemyforPosition:(CGPoint)point;
+
+@end
+
 
 @implementation GameScreen
 
@@ -45,9 +54,17 @@ float gameSpeedModifier = kGameSpeedNormal;
         self->aimCross = [AimCross sharedAimCross];
         [self addChild:self->aimCross];
         
+        self->controlState = kGameControlStatePlayerControl;
+        
+        [self setAccelerometerEnabled:YES];
+        
         [self scheduleUpdate];
     }
     return self;
+}
+
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+    NSLog(@"Acceleration: %@", acceleration);
 }
 
 - (void)update:(ccTime)delta {
@@ -68,9 +85,13 @@ float gameSpeedModifier = kGameSpeedNormal;
         [self->flyingItems addObject:item];
     }
     
+    [self findEnemyforPosition:self->player.position];
+}
+
+- (void)findEnemyforPosition:(CGPoint)point {
     NSSet *_items = [NSSet setWithSet:self->flyingItems];
     for (id item in _items) {
-        if (ccpDistance(self->player.position, ((FlyingItem *)item).position) < kGameFlyingItemHitDistance) {
+        if (ccpDistance(point, ((FlyingItem *)item).position) < kGameFlyingItemHitDistance) {
             [((FlyingItem *) item) die:kFlyingItemPlayerHit];
         }
     }
@@ -95,6 +116,17 @@ float gameSpeedModifier = kGameSpeedNormal;
     [self.scoreLabel setString:[NSString stringWithFormat:@"Score: %d", self->score]];
 }
 
+- (void)shoot {
+    if (!self->controlState == kGameControlStateAimControl) {
+        return;
+    }
+    
+    [self findEnemyforPosition:self->aimCross.position];
+    
+    ShootPath *shootPath = [ShootPath shootPathFrom:self->player.position to:self->aimCross.position];
+    [self addChild:shootPath];
+}
+
 - (void)dealloc {
     [self->scoreLabel release];
     [self->flyingItems release];
@@ -104,13 +136,19 @@ float gameSpeedModifier = kGameSpeedNormal;
     [super dealloc];
 }
 
-#pragma mark JP
+#pragma mark - JP
 
 - (void)joypadDevice:(JPDevice *)device buttonDown:(JPInputIdentifier)button {
     switch (button) {
         case kJPInputAButton:
             gameSpeedModifier = kGameSpeedSlow;
+            self->controlState = kGameControlStateAimControl;
+            [self->player controlStop];
             [self->aimCross show];
+            break;
+            
+        case kJPInputBButton:
+            [self shoot];
             break;
             
         default:
@@ -122,6 +160,8 @@ float gameSpeedModifier = kGameSpeedNormal;
     switch (button) {
         case kJPInputAButton:
             gameSpeedModifier = kGameSpeedNormal;
+            self->controlState = kGameControlStatePlayerControl;
+            [self->player controlStart];
             [self->aimCross hide];
             break;
             
@@ -130,7 +170,7 @@ float gameSpeedModifier = kGameSpeedNormal;
     }
 }
 
-#pragma mark Statics
+#pragma mark - Statics
 
 + (CCScene *)scene {
     CCScene* scene = [CCScene node];

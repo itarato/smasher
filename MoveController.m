@@ -51,7 +51,7 @@
 #pragma mark JP
 
 - (void)joypadDevice:(JPDevice *)device dPad:(JPInputIdentifier)dpad buttonDown:(JPDpadButton)dpadButton {
-    NSLog(@"DOWN %s - %d", __FUNCTION__, dpadButton);
+    // NSLog(@"DOWN %s - %d", __FUNCTION__, dpadButton);
     self->keyDownStack++;
     switch (dpadButton) {
         case kJPDpadButtonUp:
@@ -76,7 +76,7 @@
 }
 
 - (void)joypadDevice:(JPDevice *)device dPad:(JPInputIdentifier)dpad buttonUp:(JPDpadButton)dpadButton {
-    NSLog(@"UP %s - %d", __FUNCTION__, dpadButton);
+    // NSLog(@"UP %s - %d", __FUNCTION__, dpadButton);
     self->keyDownStack--;
     switch (dpadButton) {
         case kJPDpadButtonUp:

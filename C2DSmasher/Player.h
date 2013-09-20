@@ -8,16 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "JPSDK.h"
 #import "SmasherTypes.h"
 #import "MoveController.h"
 
-@interface Player : CCSprite <JPManagerDelegate, JPDeviceDelegate> {
-    SpeedDirection speedX;
-    SpeedDirection speedY;
-    int keyDownStack;
+@interface Player : CCSprite {
+    BOOL isMove;
     MoveController *moveController;
 }
+
+- (void)controlStop;
+
+- (void)controlStart;
 
 + (Player *)player;
 

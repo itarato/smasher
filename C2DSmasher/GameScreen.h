@@ -19,9 +19,12 @@
     NSMutableSet *flyingItems;
     Player *player;
     AimCross *aimCross;
+    GameControlState controlState;
 }
 
 - (void)updateScore;
+
+- (void)shoot;
 
 + (CCScene *)scene;
 

@@ -32,16 +32,6 @@
     [self->moveController update];
 }
 
-#pragma mark JP
-
-- (void)joypadDevice:(JPDevice *)device buttonDown:(JPInputIdentifier)button {
-    
-}
-
-- (void)joypadDevice:(JPDevice *)device buttonUp:(JPInputIdentifier)button {
-    
-}
-
 #pragma mark Statics
 
 + (AimCross *)sharedAimCross {

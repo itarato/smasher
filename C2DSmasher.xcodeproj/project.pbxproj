@@ -152,6 +152,7 @@
 		472E1A7117E2711B004601C4 /* JPalert_caps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 472E1A6A17E2711B004601C4 /* JPalert_caps@2x.png */; };
 		472E1A7317E2717C004601C4 /* libJoypad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 472E1A6317E2711B004601C4 /* libJoypad.a */; };
 		472E1A7517E271FC004601C4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 472E1A7417E271FC004601C4 /* Security.framework */; };
+		473C0FD117ECD0A70060E0C9 /* ShootPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 473C0FD017ECD0A70060E0C9 /* ShootPath.m */; };
 		4782D30D17E5E40F00A9C9F8 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30A17E5E40F00A9C9F8 /* enemy.png */; };
 		4782D30E17E5E40F00A9C9F8 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30B17E5E40F00A9C9F8 /* cloud.png */; };
 		4782D30F17E5E40F00A9C9F8 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30C17E5E40F00A9C9F8 /* food.png */; };
@@ -466,6 +467,8 @@
 		472E1A6917E2711B004601C4 /* JPalert_caps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JPalert_caps.png; sourceTree = "<group>"; };
 		472E1A6A17E2711B004601C4 /* JPalert_caps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JPalert_caps@2x.png"; sourceTree = "<group>"; };
 		472E1A7417E271FC004601C4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		473C0FCF17ECD0A70060E0C9 /* ShootPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShootPath.h; path = ../ShootPath.h; sourceTree = "<group>"; };
+		473C0FD017ECD0A70060E0C9 /* ShootPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShootPath.m; path = ../ShootPath.m; sourceTree = "<group>"; };
 		4782D30A17E5E40F00A9C9F8 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		4782D30B17E5E40F00A9C9F8 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		4782D30C17E5E40F00A9C9F8 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
@@ -489,10 +492,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4701CF2A17DEFC8900D83883 /* OpenGLES.framework in Frameworks */,
 				472E1A7517E271FC004601C4 /* Security.framework in Frameworks */,
 				472E1A4D17E26920004601C4 /* CFNetwork.framework in Frameworks */,
 				4701CF2817DEFC8900D83883 /* QuartzCore.framework in Frameworks */,
-				4701CF2A17DEFC8900D83883 /* OpenGLES.framework in Frameworks */,
 				4701CF2C17DEFC8900D83883 /* OpenAL.framework in Frameworks */,
 				4701CF2E17DEFC8900D83883 /* AudioToolbox.framework in Frameworks */,
 				4701CF3017DEFC8900D83883 /* AVFoundation.framework in Frameworks */,
@@ -547,12 +550,12 @@
 		4701CF3B17DEFC8900D83883 /* C2DSmasher */ = {
 			isa = PBXGroup;
 			children = (
-				47F9652D17EADDB50003CFED /* MoveController.h */,
-				47F9652E17EADDB60003CFED /* MoveController.m */,
 				47F9652817EAD8F90003CFED /* AimCross.h */,
 				47F9652917EAD8F90003CFED /* AimCross.m */,
 				4701D0CC17DEFC8B00D83883 /* AppDelegate.h */,
 				4701D0CD17DEFC8B00D83883 /* AppDelegate.m */,
+				4720D1F617E834FF00F47CD3 /* EnemyItem.h */,
+				4720D1F717E834FF00F47CD3 /* EnemyItem.m */,
 				4782D31517E6111700A9C9F8 /* FlyingItem.h */,
 				4782D31617E6111700A9C9F8 /* FlyingItem.m */,
 				4782D31B17E61C6000A9C9F8 /* FlyingItemDelegate.h */,
@@ -563,13 +566,15 @@
 				4701CF5417DEFC8900D83883 /* libs */,
 				4701D0DA17DEFCED00D83883 /* MainScreen.h */,
 				4701D0DB17DEFCED00D83883 /* MainScreen.m */,
+				47F9652D17EADDB50003CFED /* MoveController.h */,
+				47F9652E17EADDB60003CFED /* MoveController.m */,
 				4782D31017E5EC2600A9C9F8 /* Player.h */,
 				4782D31117E5EC2600A9C9F8 /* Player.m */,
 				4701CF3C17DEFC8900D83883 /* Resources */,
-				4701D0C817DEFC8B00D83883 /* Supporting Files */,
+				473C0FCF17ECD0A70060E0C9 /* ShootPath.h */,
+				473C0FD017ECD0A70060E0C9 /* ShootPath.m */,
 				47124DE517E7BC70004827CA /* SmasherTypes.h */,
-				4720D1F617E834FF00F47CD3 /* EnemyItem.h */,
-				4720D1F717E834FF00F47CD3 /* EnemyItem.m */,
+				4701D0C817DEFC8B00D83883 /* Supporting Files */,
 			);
 			path = C2DSmasher;
 			sourceTree = "<group>";
@@ -1178,6 +1183,7 @@
 				4701D08717DEFC8B00D83883 /* CDOpenALSupport.m in Sources */,
 				4701D08A17DEFC8B00D83883 /* CDXMacOSXSupport.m in Sources */,
 				4701D08D17DEFC8B00D83883 /* CDXPropertyModifierAction.m in Sources */,
+				473C0FD117ECD0A70060E0C9 /* ShootPath.m in Sources */,
 				4701D09017DEFC8B00D83883 /* CocosDenshion.m in Sources */,
 				4701D09417DEFC8B00D83883 /* SimpleAudioEngine.m in Sources */,
 				4701D0AA17DEFC8B00D83883 /* aabb.c in Sources */,

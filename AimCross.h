@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "JPSDK.h"
 #import "MoveController.h"
 
-@interface AimCross : CCSprite <JPDeviceDelegate> {
+@interface AimCross : CCSprite {
     BOOL isOn;
     MoveController *moveController;
 }

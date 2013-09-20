@@ -22,3 +22,8 @@ typedef enum {
     kPlayerSpeedNull = 0,
     kPlayerSpeedPos  = 1
 } SpeedDirection;
+
+typedef enum {
+    kGameControlStatePlayerControl,
+    kGameControlStateAimControl
+} GameControlState;

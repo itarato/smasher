@@ -7,7 +7,6 @@
 //
 
 #import "Player.h"
-#import "JPSDK.h"
 
 #define kPlayerSpeed 20.0f
 
@@ -16,18 +15,30 @@
 - (id)initWithFile:(NSString *)filename {
     self = [super initWithFile:filename];
     if (self) {
-        [[JPManager sharedManager] addListener:self];
         [self scheduleUpdate];
-        self->keyDownStack = 0;
         
         self->moveController = [[MoveController alloc] initWithSubject:self andSpeed:kPlayerSpeed];
+        
+        self->isMove = YES;
     }
     return self;
 }
 
 - (void)update:(ccTime)delta {
-    [self->moveController update];
+    if (self->isMove) {
+        [self->moveController update];
+    }
 }
+
+- (void)controlStop {
+    self->isMove = NO;
+}
+
+- (void)controlStart {
+    self->isMove = YES;
+}
+
+#pragma mark - Statics
 
 + (Player *)player {
     return [Player spriteWithFile:@"player.png"];
