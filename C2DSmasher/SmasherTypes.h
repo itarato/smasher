@@ -27,3 +27,12 @@ typedef enum {
     kGameControlStatePlayerControl,
     kGameControlStateAimControl
 } GameControlState;
+
+typedef enum {
+    kControlBtnUp,
+    kControlBtnDown,
+    kControlBtnLeft,
+    kControlBtnRight,
+    kControlBtnA,
+    kControlBtnB
+} ControlBtn;

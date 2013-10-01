@@ -152,6 +152,9 @@
 		472E1A7117E2711B004601C4 /* JPalert_caps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 472E1A6A17E2711B004601C4 /* JPalert_caps@2x.png */; };
 		472E1A7317E2717C004601C4 /* libJoypad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 472E1A6317E2711B004601C4 /* libJoypad.a */; };
 		472E1A7517E271FC004601C4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 472E1A7417E271FC004601C4 /* Security.framework */; };
+		4736469817EF5FA500A4B111 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4736469717EF5FA500A4B111 /* button.png */; };
+		4736469B17EF5FF500A4B111 /* ControllerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4736469A17EF5FF500A4B111 /* ControllerLayer.m */; };
+		4736469E17EF67DA00A4B111 /* SimpleControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4736469D17EF67DA00A4B111 /* SimpleControlButton.m */; };
 		473C0FD117ECD0A70060E0C9 /* ShootPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 473C0FD017ECD0A70060E0C9 /* ShootPath.m */; };
 		4782D30D17E5E40F00A9C9F8 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30A17E5E40F00A9C9F8 /* enemy.png */; };
 		4782D30E17E5E40F00A9C9F8 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30B17E5E40F00A9C9F8 /* cloud.png */; };
@@ -467,6 +470,11 @@
 		472E1A6917E2711B004601C4 /* JPalert_caps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JPalert_caps.png; sourceTree = "<group>"; };
 		472E1A6A17E2711B004601C4 /* JPalert_caps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JPalert_caps@2x.png"; sourceTree = "<group>"; };
 		472E1A7417E271FC004601C4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4736469717EF5FA500A4B111 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		4736469917EF5FF500A4B111 /* ControllerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerLayer.h; path = ../ControllerLayer.h; sourceTree = "<group>"; };
+		4736469A17EF5FF500A4B111 /* ControllerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControllerLayer.m; path = ../ControllerLayer.m; sourceTree = "<group>"; };
+		4736469C17EF67DA00A4B111 /* SimpleControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleControlButton.h; sourceTree = "<group>"; };
+		4736469D17EF67DA00A4B111 /* SimpleControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleControlButton.m; sourceTree = "<group>"; };
 		473C0FCF17ECD0A70060E0C9 /* ShootPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShootPath.h; path = ../ShootPath.h; sourceTree = "<group>"; };
 		473C0FD017ECD0A70060E0C9 /* ShootPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShootPath.m; path = ../ShootPath.m; sourceTree = "<group>"; };
 		4782D30A17E5E40F00A9C9F8 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
@@ -480,6 +488,7 @@
 		4782D31817E612FB00A9C9F8 /* FoodItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItem.h; sourceTree = "<group>"; };
 		4782D31917E612FB00A9C9F8 /* FoodItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItem.m; sourceTree = "<group>"; };
 		4782D31B17E61C6000A9C9F8 /* FlyingItemDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlyingItemDelegate.h; sourceTree = "<group>"; };
+		47C47C0917FAAF0800DB1A8B /* ControlTouchDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlTouchDelegate.h; sourceTree = "<group>"; };
 		47F9652817EAD8F90003CFED /* AimCross.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AimCross.h; path = ../AimCross.h; sourceTree = "<group>"; };
 		47F9652917EAD8F90003CFED /* AimCross.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AimCross.m; path = ../AimCross.m; sourceTree = "<group>"; };
 		47F9652B17EADA210003CFED /* aim_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aim_cross.png; sourceTree = "<group>"; };
@@ -554,6 +563,8 @@
 				47F9652917EAD8F90003CFED /* AimCross.m */,
 				4701D0CC17DEFC8B00D83883 /* AppDelegate.h */,
 				4701D0CD17DEFC8B00D83883 /* AppDelegate.m */,
+				4736469917EF5FF500A4B111 /* ControllerLayer.h */,
+				4736469A17EF5FF500A4B111 /* ControllerLayer.m */,
 				4720D1F617E834FF00F47CD3 /* EnemyItem.h */,
 				4720D1F717E834FF00F47CD3 /* EnemyItem.m */,
 				4782D31517E6111700A9C9F8 /* FlyingItem.h */,
@@ -573,8 +584,11 @@
 				4701CF3C17DEFC8900D83883 /* Resources */,
 				473C0FCF17ECD0A70060E0C9 /* ShootPath.h */,
 				473C0FD017ECD0A70060E0C9 /* ShootPath.m */,
+				4736469C17EF67DA00A4B111 /* SimpleControlButton.h */,
+				4736469D17EF67DA00A4B111 /* SimpleControlButton.m */,
 				47124DE517E7BC70004827CA /* SmasherTypes.h */,
 				4701D0C817DEFC8B00D83883 /* Supporting Files */,
+				47C47C0917FAAF0800DB1A8B /* ControlTouchDelegate.h */,
 			);
 			path = C2DSmasher;
 			sourceTree = "<group>";
@@ -582,6 +596,7 @@
 		4701CF3C17DEFC8900D83883 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4736469717EF5FA500A4B111 /* button.png */,
 				47F9652B17EADA210003CFED /* aim_cross.png */,
 				4782D31317E5EEE300A9C9F8 /* player.png */,
 				4782D30A17E5E40F00A9C9F8 /* enemy.png */,
@@ -1077,6 +1092,7 @@
 				472E1A7117E2711B004601C4 /* JPalert_caps@2x.png in Resources */,
 				4782D30D17E5E40F00A9C9F8 /* enemy.png in Resources */,
 				4782D30E17E5E40F00A9C9F8 /* cloud.png in Resources */,
+				4736469817EF5FA500A4B111 /* button.png in Resources */,
 				4782D30F17E5E40F00A9C9F8 /* food.png in Resources */,
 				4782D31417E5EEE300A9C9F8 /* player.png in Resources */,
 				47F9652C17EADA210003CFED /* aim_cross.png in Resources */,
@@ -1094,6 +1110,7 @@
 				4701CF5B17DEFC8900D83883 /* CCActionCamera.m in Sources */,
 				4701CF5E17DEFC8900D83883 /* CCActionCatmullRom.m in Sources */,
 				4701CF6117DEFC8900D83883 /* CCActionEase.m in Sources */,
+				4736469E17EF67DA00A4B111 /* SimpleControlButton.m in Sources */,
 				4701CF6417DEFC8900D83883 /* CCActionGrid.m in Sources */,
 				4701CF6717DEFC8900D83883 /* CCActionGrid3D.m in Sources */,
 				4701CF6A17DEFC8900D83883 /* CCActionInstant.m in Sources */,
@@ -1135,6 +1152,7 @@
 				4701CFD817DEFC8A00D83883 /* CCParticleSystemQuad.m in Sources */,
 				4701CFDB17DEFC8A00D83883 /* CCPhysicsDebugNode.m in Sources */,
 				4701CFDE17DEFC8A00D83883 /* CCPhysicsSprite.mm in Sources */,
+				4736469B17EF5FF500A4B111 /* ControllerLayer.m in Sources */,
 				4701CFE117DEFC8A00D83883 /* CCProgressTimer.m in Sources */,
 				4701CFE517DEFC8A00D83883 /* CCRenderTexture.m in Sources */,
 				4701CFE817DEFC8A00D83883 /* CCScene.m in Sources */,

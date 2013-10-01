@@ -12,8 +12,10 @@
 #import "JPSDK.h"
 #import "Player.h"
 #import "AimCross.h"
+#import "ControllerLayer.h"
+#import "ControlTouchDelegate.h"
 
-@interface GameScreen : CCLayer <JPDeviceDelegate, JPManagerDelegate, FlyingItemDelegate> {
+@interface GameScreen : CCLayer <JPDeviceDelegate, JPManagerDelegate, FlyingItemDelegate, ControlTouchDelegate> {
     CCLabelTTF *scoreLabel;
     int score;
     NSMutableSet *flyingItems;
@@ -21,6 +23,7 @@
     AimCross *aimCross;
     GameControlState controlState;
     float prevAccZ;
+    ControllerLayer *controlPad;
 }
 
 - (void)updateScore;

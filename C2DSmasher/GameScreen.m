@@ -58,6 +58,9 @@ float gameSpeedModifier = kGameSpeedNormal;
         
         self->prevAccZ = 0.0f;
         
+        self->controlPad = [ControllerLayer sharedController];
+        [self addChild:self->controlPad];
+        
         [self scheduleUpdate];
     }
     return self;
@@ -128,6 +131,7 @@ float gameSpeedModifier = kGameSpeedNormal;
     [self->flyingItems release];
     [self->player release];
     [self->aimCross release];
+    [self->controlPad release];
     
     [super dealloc];
 }
@@ -167,12 +171,20 @@ float gameSpeedModifier = kGameSpeedNormal;
 }
 
 - (void)joypadDevice:(JPDevice *)device didAccelerate:(JPAcceleration)accel {
-    // NSLog(@"Acceleration %0.2f %0.2f %0.2f", accel.x, accel.y, accel.z);
     if (fabsf(accel.z - self->prevAccZ) > 0.15f) {
         [self shoot];
     }
-//    NSLog(@"ACC: %f", fabsf(accel.z - self->prevAccZ));
     self->prevAccZ = accel.z;
+}
+
+#pragma mark - Controller delegate
+
+- (void)controlTouchBegan:(ControlBtn)buttonType {
+    
+}
+
+- (void)controlTouchEnd:(ControlBtn)buttonType {
+    
 }
 
 #pragma mark - Statics
