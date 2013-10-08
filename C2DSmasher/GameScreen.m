@@ -72,6 +72,10 @@ float gameSpeedModifier = kGameSpeedNormal;
         
         // Attach Joypad to the Controller.
         [[JPManager sharedManager] addListener:[Controller sharedController]];
+        [[JPManager sharedManager] addListener:self];
+        if ([JPManager sharedManager].devicesCount > 0) {
+            [self->controlLayer setVisible:NO];
+        }
         
         [self scheduleUpdate];
     }
@@ -186,6 +190,16 @@ float gameSpeedModifier = kGameSpeedNormal;
         default:
             break;
     }
+}
+
+#pragma mark - Joypad
+
+- (void)joypadManager:(JPManager *)manager deviceDidConnect:(JPDevice *)device {
+    [self->controlLayer setVisible:NO];
+}
+
+- (void)joypadManager:(JPManager *)manager deviceDidDisconnect:(JPDevice *)device {
+    [self->controlLayer setVisible:YES];
 }
 
 #pragma mark - Statics
