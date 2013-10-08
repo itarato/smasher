@@ -34,5 +34,6 @@ typedef enum {
     kControlBtnLeft,
     kControlBtnRight,
     kControlBtnA,
-    kControlBtnB
+    kControlBtnB,
+    kControlBtnZShake
 } ControlBtn;

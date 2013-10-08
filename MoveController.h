@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "JPSDK.h"
 #import "SmasherTypes.h"
+#import "Controller.h"
+#import "ControlTouchDelegate.h"
 
-@interface MoveController : NSObject <JPDeviceDelegate> {
+@interface MoveController : NSObject <ControlTouchDelegate> {
     int keyDownStack;
     float defaultSpeed;
     SpeedDirection speedX;

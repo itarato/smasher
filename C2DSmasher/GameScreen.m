@@ -13,6 +13,7 @@
 #import "FoodItem.h"
 #import "EnemyItem.h"
 #import "ShootPath.h"
+#import "Controller.h"
 
 #define kGameFlyingItemHitDistance 60.0f
 #define kGameSpeedSlow 0.3f
@@ -39,27 +40,38 @@ float gameSpeedModifier = kGameSpeedNormal;
         
         CGSize win_size = [[CCDirector sharedDirector] winSize];
         
+        self->gameLayer = [CCNode node];
+        self->controlLayer = [CCNode node];
+        [self addChild:gameLayer];
+        [self addChild:controlLayer];
+        
         self->player = [Player player];
-        [self addChild:self->player];
+        [self->gameLayer addChild:self->player];
         [self->player setPosition:CGPointMake(100.0f, win_size.height * 0.5)];
         
         self.scoreLabel = [CCLabelTTF labelWithString:@"Score: 0" fontName:@"Helvetica" fontSize:30.0f];
-        [self addChild:scoreLabel];
+        [self->gameLayer addChild:scoreLabel];
         [scoreLabel setPosition:ccp(win_size.width - 200.0f, win_size.height - 100.0f)];
         
         self->flyingItems = [[NSMutableSet alloc] init];
-        
-        [[JPManager sharedManager] addListener:self];
-        
+     
         self->aimCross = [AimCross sharedAimCross];
-        [self addChild:self->aimCross];
+        [self->gameLayer addChild:self->aimCross];
         
         self->controlState = kGameControlStatePlayerControl;
         
         self->prevAccZ = 0.0f;
         
+        // Visual control pad.
         self->controlPad = [ControllerLayer sharedController];
-        [self addChild:self->controlPad];
+        self->controlPad.delegate = [Controller sharedController];
+        [self->controlLayer addChild:self->controlPad];
+        
+        // Attach Controller delegate to self.
+        [[Controller sharedController] addListener:self];
+        
+        // Attach Joypad to the Controller.
+        [[JPManager sharedManager] addListener:[Controller sharedController]];
         
         [self scheduleUpdate];
     }
@@ -80,7 +92,7 @@ float gameSpeedModifier = kGameSpeedNormal;
         
         FlyingItem *item = [FlyingItem flyingItemOfType:type];
         item.delegate = self;
-        [self addChild:item];
+        [self->gameLayer addChild:item];
         [self->flyingItems addObject:item];
     }
     
@@ -132,22 +144,28 @@ float gameSpeedModifier = kGameSpeedNormal;
     [self->player release];
     [self->aimCross release];
     [self->controlPad release];
+    [self->controlLayer release];
+    [self->gameLayer release];
     
     [super dealloc];
 }
 
-#pragma mark - JP
+#pragma mark - Controller delegate
 
-- (void)joypadDevice:(JPDevice *)device buttonDown:(JPInputIdentifier)button {
-    switch (button) {
-        case kJPInputAButton:
+- (void)controlTouchBegan:(ControlBtn)buttonType {
+    switch (buttonType) {
+        case kControlBtnA:
             gameSpeedModifier = kGameSpeedSlow;
             self->controlState = kGameControlStateAimControl;
             [self->player controlStop];
             [self->aimCross show];
             break;
             
-        case kJPInputBButton:
+        case kControlBtnB:
+            [self shoot];
+            break;
+            
+        case kControlBtnZShake:
             [self shoot];
             break;
             
@@ -156,9 +174,9 @@ float gameSpeedModifier = kGameSpeedNormal;
     }
 }
 
-- (void)joypadDevice:(JPDevice *)device buttonUp:(JPInputIdentifier)button {
-    switch (button) {
-        case kJPInputAButton:
+- (void)controlTouchEnd:(ControlBtn)buttonType {
+    switch (buttonType) {
+        case kControlBtnA:
             gameSpeedModifier = kGameSpeedNormal;
             self->controlState = kGameControlStatePlayerControl;
             [self->player controlStart];
@@ -168,23 +186,6 @@ float gameSpeedModifier = kGameSpeedNormal;
         default:
             break;
     }
-}
-
-- (void)joypadDevice:(JPDevice *)device didAccelerate:(JPAcceleration)accel {
-    if (fabsf(accel.z - self->prevAccZ) > 0.15f) {
-        [self shoot];
-    }
-    self->prevAccZ = accel.z;
-}
-
-#pragma mark - Controller delegate
-
-- (void)controlTouchBegan:(ControlBtn)buttonType {
-    
-}
-
-- (void)controlTouchEnd:(ControlBtn)buttonType {
-    
 }
 
 #pragma mark - Statics

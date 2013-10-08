@@ -11,13 +11,13 @@
 #import "SmasherTypes.h"
 #import "ControlTouchDelegate.h"
 
-@interface SimpleControlButton : CCLayer {
+@interface SimpleControlButton : CCMenuItemImage {
     ControlBtn btnType;
     id<ControlTouchDelegate> delegate;
 }
 
 @property (nonatomic, assign) id<ControlTouchDelegate> delegate;
 
-+ (SimpleControlButton *)simpleControlButtonWithImage:(NSString *)imageName andType:(ControlBtn)btnType;
++ (SimpleControlButton *)simpleControlButtonWithImage:(NSString *)imageName type:(ControlBtn)btnType;
 
 @end

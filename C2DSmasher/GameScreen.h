@@ -15,7 +15,7 @@
 #import "ControllerLayer.h"
 #import "ControlTouchDelegate.h"
 
-@interface GameScreen : CCLayer <JPDeviceDelegate, JPManagerDelegate, FlyingItemDelegate, ControlTouchDelegate> {
+@interface GameScreen : CCLayer <JPManagerDelegate, FlyingItemDelegate, ControlTouchDelegate> {
     CCLabelTTF *scoreLabel;
     int score;
     NSMutableSet *flyingItems;
@@ -24,6 +24,9 @@
     GameControlState controlState;
     float prevAccZ;
     ControllerLayer *controlPad;
+    
+    CCNode *controlLayer;
+    CCNode *gameLayer;
 }
 
 - (void)updateScore;

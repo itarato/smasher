@@ -156,6 +156,7 @@
 		4736469B17EF5FF500A4B111 /* ControllerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4736469A17EF5FF500A4B111 /* ControllerLayer.m */; };
 		4736469E17EF67DA00A4B111 /* SimpleControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4736469D17EF67DA00A4B111 /* SimpleControlButton.m */; };
 		473C0FD117ECD0A70060E0C9 /* ShootPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 473C0FD017ECD0A70060E0C9 /* ShootPath.m */; };
+		476BC2ED17FB475300A3D704 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2EC17FB475300A3D704 /* Controller.m */; };
 		4782D30D17E5E40F00A9C9F8 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30A17E5E40F00A9C9F8 /* enemy.png */; };
 		4782D30E17E5E40F00A9C9F8 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30B17E5E40F00A9C9F8 /* cloud.png */; };
 		4782D30F17E5E40F00A9C9F8 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30C17E5E40F00A9C9F8 /* food.png */; };
@@ -477,6 +478,8 @@
 		4736469D17EF67DA00A4B111 /* SimpleControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleControlButton.m; sourceTree = "<group>"; };
 		473C0FCF17ECD0A70060E0C9 /* ShootPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShootPath.h; path = ../ShootPath.h; sourceTree = "<group>"; };
 		473C0FD017ECD0A70060E0C9 /* ShootPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShootPath.m; path = ../ShootPath.m; sourceTree = "<group>"; };
+		476BC2EB17FB475300A3D704 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		476BC2EC17FB475300A3D704 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		4782D30A17E5E40F00A9C9F8 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		4782D30B17E5E40F00A9C9F8 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		4782D30C17E5E40F00A9C9F8 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
@@ -589,6 +592,8 @@
 				47124DE517E7BC70004827CA /* SmasherTypes.h */,
 				4701D0C817DEFC8B00D83883 /* Supporting Files */,
 				47C47C0917FAAF0800DB1A8B /* ControlTouchDelegate.h */,
+				476BC2EB17FB475300A3D704 /* Controller.h */,
+				476BC2EC17FB475300A3D704 /* Controller.m */,
 			);
 			path = C2DSmasher;
 			sourceTree = "<group>";
@@ -1173,6 +1178,7 @@
 				4701D02417DEFC8A00D83883 /* CCTMXTiledMap.m in Sources */,
 				4701D02717DEFC8A00D83883 /* CCTMXXMLParser.m in Sources */,
 				4701D02A17DEFC8A00D83883 /* CCTransition.m in Sources */,
+				476BC2ED17FB475300A3D704 /* Controller.m in Sources */,
 				4701D02D17DEFC8A00D83883 /* CCTransitionPageTurn.m in Sources */,
 				4701D03017DEFC8A00D83883 /* CCTransitionProgress.m in Sources */,
 				4701D03417DEFC8A00D83883 /* cocos2d.m in Sources */,

@@ -16,7 +16,7 @@
         self->defaultSpeed = speed;
         self->subject = subjectNode;
         
-        [[JPManager sharedManager] addListener:self];
+        [[Controller sharedController] addListener:self];
     }
     return self;
 }
@@ -48,25 +48,25 @@
     }
 }
 
-#pragma mark JP
+#pragma mark - Controller delegate
 
-- (void)joypadDevice:(JPDevice *)device dPad:(JPInputIdentifier)dpad buttonDown:(JPDpadButton)dpadButton {
-    // NSLog(@"DOWN %s - %d", __FUNCTION__, dpadButton);
+- (void)controlTouchBegan:(ControlBtn)buttonType {
+    NSLog(@"MOVE");
     self->keyDownStack++;
-    switch (dpadButton) {
-        case kJPDpadButtonUp:
+    switch (buttonType) {
+        case kControlBtnUp:
             self->speedY = kPlayerSpeedNeg;
             break;
             
-        case kJPDpadButtonDown:
+        case kControlBtnDown:
             self->speedY = kPlayerSpeedPos;
             break;
             
-        case kJPDpadButtonLeft:
+        case kControlBtnLeft:
             self->speedX = kPlayerSpeedNeg;
             break;
             
-        case kJPDpadButtonRight:
+        case kControlBtnRight:
             self->speedX = kPlayerSpeedPos;
             break;
             
@@ -75,17 +75,16 @@
     }
 }
 
-- (void)joypadDevice:(JPDevice *)device dPad:(JPInputIdentifier)dpad buttonUp:(JPDpadButton)dpadButton {
-    // NSLog(@"UP %s - %d", __FUNCTION__, dpadButton);
+- (void)controlTouchEnd:(ControlBtn)buttonType {
     self->keyDownStack--;
-    switch (dpadButton) {
-        case kJPDpadButtonUp:
-        case kJPDpadButtonDown:
+    switch (buttonType) {
+        case kControlBtnUp:
+        case kControlBtnDown:
             self->speedY = kPlayerSpeedNull;
             break;
             
-        case kJPDpadButtonLeft:
-        case kJPDpadButtonRight:
+        case kControlBtnLeft:
+        case kControlBtnRight:
             self->speedX = kPlayerSpeedNull;
             break;
             
