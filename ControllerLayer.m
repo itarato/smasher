@@ -57,16 +57,16 @@
     return self;
 }
 
-- (void)dealloc {
-    [self->leftBtn release];
-    [self->rightBtn release];
-    [self->upBtn release];
-    [self->downBtn release];
-    [self->aBtn release];
-    [self->bBtn release];
-    
-    [super dealloc];
-}
+//- (void)dealloc {
+////    [self->leftBtn release];
+////    [self->rightBtn release];
+////    [self->upBtn release];
+////    [self->downBtn release];
+////    [self->aBtn release];
+////    [self->bBtn release];
+//    
+//    [super dealloc];
+//}
 
 #pragma mark - Controller delegate
 

@@ -38,11 +38,11 @@
     }
 }
 
-- (void)dealloc {
-    [self->delegates dealloc];
-    
-    [super dealloc];
-}
+//- (void)dealloc {
+//    [self->delegates dealloc];
+//    
+//    [super dealloc];
+//}
 
 #pragma mark - Button converters
 
@@ -85,8 +85,10 @@
 #pragma mark - Notifiers
 
 - (void)notifyListenersTouchBegin:(ControlBtn)button {
-    NSLog(@"Notified %d about: %d", [self->delegates count], button);
-    for (id<ControlTouchDelegate> delegate in self->delegates) {
+//    NSLog(@"Notified %d about: %d", [self->delegates count], button);
+    // To prevent using the original so it couldn't change.
+    NSSet<ControlTouchDelegate> *listeners = (NSSet<ControlTouchDelegate> *)[NSSet setWithSet:self->delegates];
+    for (id<ControlTouchDelegate> delegate in listeners) {
         if (delegate != nil && [delegate respondsToSelector:@selector(controlTouchBegan:)]) {
             [delegate controlTouchBegan:button];
         }
@@ -94,7 +96,9 @@
 }
 
 - (void)notifyListenersTouchEnd:(ControlBtn)button {
-    for (id<ControlTouchDelegate> delegate in self->delegates) {
+    // To prevent using the original so it couldn't change.
+    NSSet<ControlTouchDelegate> *listeners = (NSSet<ControlTouchDelegate> *)[NSSet setWithSet:self->delegates];
+    for (id<ControlTouchDelegate> delegate in listeners) {
         if (delegate != nil && [delegate respondsToSelector:@selector(controlTouchEnd:)]) {
             [delegate controlTouchEnd:button];
         }

@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "ControlTouchDelegate.h"
 
-@interface MainScreen : CCLayer {
-    
+@interface MainScreen : CCLayer <ControlTouchDelegate> {
+    CCScene *gameScene;
 }
 
-+(CCScene *) scene;
++ (CCScene *)scene;
 
 @end

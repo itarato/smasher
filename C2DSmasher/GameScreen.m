@@ -18,6 +18,8 @@
 #define kGameFlyingItemHitDistance 60.0f
 #define kGameSpeedSlow 0.3f
 #define kGameSpeedNormal 1.0f
+#define kGameMaxHealth 5
+#define kGameMaxLives 1
 
 float gameSpeedModifier = kGameSpeedNormal;
 
@@ -26,6 +28,10 @@ float gameSpeedModifier = kGameSpeedNormal;
 
 - (void)findEnemyforPosition:(CGPoint)point;
 
+- (void)startRound;
+
+- (void)endGame;
+
 @end
 
 
@@ -33,11 +39,26 @@ float gameSpeedModifier = kGameSpeedNormal;
 
 @synthesize scoreLabel;
 
--(id) init {
+- (void)setupLabels {
+    CGSize win_size = [[CCDirector sharedDirector] winSize];
+    
+    // Labels.
+    self->scoreLabel = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica" fontSize:30.0f];
+    [self->scoreLabel setPosition:ccp(win_size.width - 200.0f, win_size.height - 100.0f)];
+    [self->gameLayer addChild:self->scoreLabel];
+    
+    self->healthLabel = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica" fontSize:30.0f];
+    [self->healthLabel setPosition:ccp(win_size.width - 200.0f, win_size.height - 140.0f)];
+    [self->gameLayer addChild:self->healthLabel];
+    
+    self->livesLabel = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica" fontSize:30.0f];
+    [self->livesLabel setPosition:ccp(win_size.width - 200.0f, win_size.height - 180.0f)];
+    [self->gameLayer addChild:self->livesLabel];
+}
+
+- (id)init {
     self = [super init];
     if (self) {
-        self->score = 0;
-        
         CGSize win_size = [[CCDirector sharedDirector] winSize];
         
         self->gameLayer = [CCNode node];
@@ -49,9 +70,7 @@ float gameSpeedModifier = kGameSpeedNormal;
         [self->gameLayer addChild:self->player];
         [self->player setPosition:CGPointMake(100.0f, win_size.height * 0.5)];
         
-        self.scoreLabel = [CCLabelTTF labelWithString:@"Score: 0" fontName:@"Helvetica" fontSize:30.0f];
-        [self->gameLayer addChild:scoreLabel];
-        [scoreLabel setPosition:ccp(win_size.width - 200.0f, win_size.height - 100.0f)];
+        [self setupLabels];
         
         self->flyingItems = [[NSMutableSet alloc] init];
      
@@ -66,20 +85,36 @@ float gameSpeedModifier = kGameSpeedNormal;
         self->controlPad = [ControllerLayer sharedController];
         self->controlPad.delegate = [Controller sharedController];
         [self->controlLayer addChild:self->controlPad];
-        
-        // Attach Controller delegate to self.
-        [[Controller sharedController] addListener:self];
-        
-        // Attach Joypad to the Controller.
-        [[JPManager sharedManager] addListener:[Controller sharedController]];
-        [[JPManager sharedManager] addListener:self];
+
         if ([JPManager sharedManager].devicesCount > 0) {
             [self->controlLayer setVisible:NO];
         }
         
+        self->score = 0;
+        self->lives = kGameMaxLives;
+        
         [self scheduleUpdate];
+        
+        [self startRound];
     }
     return self;
+}
+
+- (void)clearDisplay {
+    NSSet *_items = [NSSet setWithSet:self->flyingItems];
+    for (FlyingItem *item in _items) {
+        [item die:kFlyingItemClearDisplay];
+    }
+}
+
+- (void)startRound {
+    self->health = kGameMaxHealth;
+    [self clearDisplay];
+}
+
+- (void)endGame {
+    [self clearDisplay];
+    [[CCDirector sharedDirector] popScene];
 }
 
 - (void)update:(ccTime)delta {
@@ -103,6 +138,21 @@ float gameSpeedModifier = kGameSpeedNormal;
     [self findEnemyforPosition:self->player.position];
 }
 
+- (void)onEnter {
+    // Attach Controller delegate to self.
+    [[Controller sharedController] addListener:self];
+    
+    // Attach Joypad to the Controller.
+    [[JPManager sharedManager] addListener:self];
+    [super onEnter];
+}
+
+- (void)onExit {
+    [[Controller sharedController] removeListener:self];
+    [[JPManager sharedManager] removeListener:self];
+    [super onExit];
+}
+
 - (void)findEnemyforPosition:(CGPoint)point {
     NSSet *_items = [NSSet setWithSet:self->flyingItems];
     for (id item in _items) {
@@ -113,6 +163,10 @@ float gameSpeedModifier = kGameSpeedNormal;
 }
 
 - (void)flyingItemDied:(FlyingItem *)item withType:(FlyingItemDeathType)deathType {
+    if (deathType == kFlyingItemClearDisplay) {
+        return;
+    }
+    
     if (deathType == kFlyingItemPlayerHit) {
         if ([item isKindOfClass:[FoodItem class]]) {
             self->score++;
@@ -120,7 +174,17 @@ float gameSpeedModifier = kGameSpeedNormal;
         
         if ([item isKindOfClass:[EnemyItem class]]) {
             self->score -= 5;
+            self->health -= 5;
         }
+    }
+    
+    if (self->health <= 0) {
+        self->lives--;
+        self->health = kGameMaxHealth;
+        [self startRound];
+    }
+    if (self->lives <= 0) {
+        [self endGame];
     }
     
     [self updateScore];
@@ -128,7 +192,9 @@ float gameSpeedModifier = kGameSpeedNormal;
 }
 
 - (void)updateScore {
-    [self.scoreLabel setString:[NSString stringWithFormat:@"Score: %d", self->score]];
+    [self->scoreLabel setString:[NSString stringWithFormat:@"Score: %d", self->score]];
+    [self->healthLabel setString:[NSString stringWithFormat:@"Health: %d", self->health]];
+    [self->livesLabel setString:[NSString stringWithFormat:@"Lives: %d", self->lives]];
 }
 
 - (void)shoot {
@@ -143,14 +209,14 @@ float gameSpeedModifier = kGameSpeedNormal;
 }
 
 - (void)dealloc {
-    [self->scoreLabel release];
-    [self->flyingItems release];
-    [self->player release];
-    [self->aimCross release];
-    [self->controlPad release];
-    [self->controlLayer release];
-    [self->gameLayer release];
-    
+////    [self->scoreLabel release];
+////    [self->flyingItems release];
+////    [self->player release];
+////    [self->aimCross release];
+////    [self->controlPad release];
+////    [self->controlLayer release];
+////    [self->gameLayer release];
+//    
     [super dealloc];
 }
 
@@ -205,10 +271,15 @@ float gameSpeedModifier = kGameSpeedNormal;
 #pragma mark - Statics
 
 + (CCScene *)scene {
-    CCScene* scene = [CCScene node];
-    CCLayer* layer = [GameScreen node];
-    [scene addChild:layer];
-    return scene;
+    static CCScene *instance;
+    
+    if (instance == nil) {
+        instance = [CCScene node];
+        CCLayer* layer = [GameScreen node];
+        [instance addChild:layer];
+    }
+    
+    return instance;
 }
 
 + (float)worldSpeedMultiplier {

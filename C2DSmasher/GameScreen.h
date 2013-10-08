@@ -17,6 +17,9 @@
 
 @interface GameScreen : CCLayer <JPManagerDelegate, FlyingItemDelegate, ControlTouchDelegate> {
     CCLabelTTF *scoreLabel;
+    CCLabelTTF *healthLabel;
+    CCLabelTTF *livesLabel;
+    
     int score;
     NSMutableSet *flyingItems;
     Player *player;
@@ -24,6 +27,9 @@
     GameControlState controlState;
     float prevAccZ;
     ControllerLayer *controlPad;
+    
+    int health;
+    int lives;
     
     CCNode *controlLayer;
     CCNode *gameLayer;

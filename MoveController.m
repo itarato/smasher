@@ -51,7 +51,6 @@
 #pragma mark - Controller delegate
 
 - (void)controlTouchBegan:(ControlBtn)buttonType {
-    NSLog(@"MOVE");
     self->keyDownStack++;
     switch (buttonType) {
         case kControlBtnUp:

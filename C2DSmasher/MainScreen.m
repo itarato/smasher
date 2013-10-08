@@ -8,17 +8,21 @@
 
 #import "MainScreen.h"
 #import "GameScreen.h"
+#import "Controller.h"
+
+@interface MainScreen ()
+
+- (void)startGame;
+
+@end
 
 @implementation MainScreen
 
--(id) init {
+- (id)init {
     self = [super init];
     if (self) {
         
-        CCMenuItem* startMenuItem = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
-            CCScene* gameScene = [GameScreen scene];
-            [[CCDirector sharedDirector] pushScene:gameScene];
-        }];
+        CCMenuItem *startMenuItem = [CCMenuItemFont itemWithString:@"Start" target:self selector:@selector(startGame)];
         CGSize win_size = [[CCDirector sharedDirector] winSize];
         
         CCMenu* menu = [CCMenu menuWithItems:startMenuItem, nil];
@@ -28,6 +32,41 @@
     }
     return self;
 }
+
+- (void)startGame {
+    if (self->gameScene == nil) {
+        self->gameScene = [GameScreen scene];
+    }
+    [[CCDirector sharedDirector] pushScene:self->gameScene];
+}
+
+#pragma mark - CCNode methods
+
+- (void)onEnter {
+    [[Controller sharedController] addListener:self];
+    [super onEnter];
+}
+
+- (void)onExit {
+    [[Controller sharedController] removeListener:self];
+    [super onExit];
+}
+
+#pragma mark - Controller delegate
+
+- (void)controlTouchEnd:(ControlBtn)buttonType {
+    switch (buttonType) {
+        case kControlBtnA:
+        case kControlBtnB:
+            [self startGame];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - Statics
 
 +(CCScene *) scene {
     CCScene* scene = [CCScene node];

@@ -10,6 +10,7 @@
 
 #import "AppDelegate.h"
 #import "MainScreen.h"
+#import "Controller.h"
 
 #import "JPSDK.h"
 
@@ -65,18 +66,12 @@
     [manager setMaxPlayerCount:1];
     [manager setDisplayDebugFrames:NO];
     [manager setBustImageCache:NO];
-    // If you have created custom JPControllerLayout(s), specify all
-    // images used by them here:
-//    [manager setImageNames:[NSArray arrayWithObjects:
-//                            // @"image1.png",
-//                            // @"image2.png",
-//                            nil]];
     JPControllerLayout *layout = [JPControllerLayout nesLayout];
     [layout addAccelerometer];
     [manager setControllerLayout:layout];
     [manager setGameState:kJPGameStateMenu];
-//    [manager set]
-//    [manager addListener:self];
+    
+    [[JPManager sharedManager] addListener:[Controller sharedController]];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
