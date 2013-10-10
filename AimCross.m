@@ -35,13 +35,8 @@
 #pragma mark Statics
 
 + (AimCross *)sharedAimCross {
-    static AimCross *instance = nil;
-    
-    if (instance == nil) {
-        instance = [AimCross spriteWithFile:@"aim_cross.png"];
-        [instance hide];
-    }
-    
+    AimCross *instance = [AimCross spriteWithFile:@"aim_cross.png"];
+    [instance hide];
     return instance;
 }
 

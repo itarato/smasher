@@ -22,6 +22,10 @@
 
 @implementation Controller
 
+- (void)dealloc {
+    [super dealloc];
+}
+
 - (void)addListener:(id<ControlTouchDelegate>)delegate {
     if (self->delegates == nil) {
         self->delegates = (NSMutableSet<ControlTouchDelegate> *)[[NSMutableSet alloc] init];

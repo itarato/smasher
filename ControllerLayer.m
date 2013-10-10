@@ -57,16 +57,10 @@
     return self;
 }
 
-//- (void)dealloc {
-////    [self->leftBtn release];
-////    [self->rightBtn release];
-////    [self->upBtn release];
-////    [self->downBtn release];
-////    [self->aBtn release];
-////    [self->bBtn release];
-//    
-//    [super dealloc];
-//}
+- (void)dealloc {
+    NSLog(@"DEALLOC %s", __FILE__);
+    [super dealloc];
+}
 
 #pragma mark - Controller delegate
 
@@ -83,14 +77,16 @@
 
 #pragma mark - Statics
 
-+ (ControllerLayer *)sharedController {
-    static ControllerLayer *instance = nil;
++ (ControllerLayer *)sharedControllerWithDelegate:(id<ControlTouchDelegate>)delegate {
+    static ControllerLayer *_controllerLayerInstance = nil;
     
-    if (instance == nil) {
-        instance = [ControllerLayer node];
+    if (_controllerLayerInstance == nil) {
+        _controllerLayerInstance = [ControllerLayer node];
+        _controllerLayerInstance.delegate = delegate;
+        [_controllerLayerInstance retain];
     }
     
-    return instance;
+    return _controllerLayerInstance;
 }
 
 @end

@@ -37,8 +37,6 @@ float gameSpeedModifier = kGameSpeedNormal;
 
 @implementation GameScreen
 
-@synthesize scoreLabel;
-
 - (void)setupLabels {
     CGSize win_size = [[CCDirector sharedDirector] winSize];
     
@@ -82,8 +80,7 @@ float gameSpeedModifier = kGameSpeedNormal;
         self->prevAccZ = 0.0f;
         
         // Visual control pad.
-        self->controlPad = [ControllerLayer sharedController];
-        self->controlPad.delegate = [Controller sharedController];
+        self->controlPad = [ControllerLayer sharedControllerWithDelegate:[Controller sharedController]];
         [self->controlLayer addChild:self->controlPad];
 
         if ([JPManager sharedManager].devicesCount > 0) {
@@ -209,14 +206,15 @@ float gameSpeedModifier = kGameSpeedNormal;
 }
 
 - (void)dealloc {
-////    [self->scoreLabel release];
-////    [self->flyingItems release];
-////    [self->player release];
-////    [self->aimCross release];
-////    [self->controlPad release];
-////    [self->controlLayer release];
-////    [self->gameLayer release];
-//    
+//    [self->scoreLabel release];
+//    [self->player release];
+//    [self->aimCross release];
+//    [self->controlPad release];
+//    [self->controlLayer release];
+//    [self->gameLayer release];
+
+    NSLog(@"DEALLOC GAME SCREEN");
+    [self->flyingItems release];
     [super dealloc];
 }
 
@@ -271,15 +269,11 @@ float gameSpeedModifier = kGameSpeedNormal;
 #pragma mark - Statics
 
 + (CCScene *)scene {
-    static CCScene *instance;
+    CCScene *scene = [CCScene node];
+    CCLayer* layer = [GameScreen node];
+    [scene addChild:layer];
     
-    if (instance == nil) {
-        instance = [CCScene node];
-        CCLayer* layer = [GameScreen node];
-        [instance addChild:layer];
-    }
-    
-    return instance;
+    return scene;
 }
 
 + (float)worldSpeedMultiplier {

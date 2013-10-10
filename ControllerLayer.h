@@ -24,6 +24,6 @@
 
 @property (nonatomic, assign) id<ControlTouchDelegate> delegate;
 
-+ (ControllerLayer *)sharedController;
++ (ControllerLayer *)sharedControllerWithDelegate:(id<ControlTouchDelegate>)delegate;
 
 @end

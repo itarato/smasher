@@ -43,6 +43,4 @@
 
 + (float)worldSpeedMultiplier;
 
-@property (nonatomic, retain) CCLabelTTF *scoreLabel;
-
 @end

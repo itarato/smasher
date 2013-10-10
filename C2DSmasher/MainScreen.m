@@ -34,10 +34,11 @@
 }
 
 - (void)startGame {
-    if (self->gameScene == nil) {
-        self->gameScene = [GameScreen scene];
-    }
-    [[CCDirector sharedDirector] pushScene:self->gameScene];
+//    if (self->gameScene == nil) {
+//        self->gameScene = [GameScene node];
+//    }
+    CCScene *gameScene = [GameScreen scene];
+    [[CCDirector sharedDirector] pushScene:gameScene];
 }
 
 #pragma mark - CCNode methods
@@ -68,7 +69,7 @@
 
 #pragma mark - Statics
 
-+(CCScene *) scene {
++ (CCScene *)scene {
     CCScene* scene = [CCScene node];
     CCLayer* layer = [MainScreen node];
     [scene addChild:layer z:0 tag:1];

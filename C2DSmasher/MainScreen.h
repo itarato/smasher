@@ -10,8 +10,10 @@
 #import "cocos2d.h"
 #import "ControlTouchDelegate.h"
 
+//@class GameScene;
+
 @interface MainScreen : CCLayer <ControlTouchDelegate> {
-    CCScene *gameScene;
+//    GameScene *gameScene;
 }
 
 + (CCScene *)scene;
