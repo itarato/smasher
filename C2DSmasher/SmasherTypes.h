@@ -15,7 +15,8 @@ typedef enum {
 typedef enum {
     kFlyingItemOutOufScreen,
     kFlyingItemPlayerHit,
-    kFlyingItemClearDisplay
+    kFlyingItemClearDisplay,
+    kFlyingItemShoot
 } FlyingItemDeathType;
 
 typedef enum {

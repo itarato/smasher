@@ -16,6 +16,7 @@
 @implementation FlyingItem
 
 @synthesize delegate;
+@synthesize score;
 
 - (id)initWithFile:(NSString *)filename {
     if ((self = [super initWithFile:filename])) {
@@ -23,6 +24,7 @@
         [self setPosition:ccp(win_size.width, win_size.height * CCRANDOM_0_1())];
         
         self->speed = (CCRANDOM_0_1() * 0.5f + 0.5f) * kFlyingItemSpeed;
+        self->score = 0;
         
         [self scheduleUpdate];
     }

@@ -10,6 +10,13 @@
 
 @implementation EnemyItem
 
+- (id)initWithFile:(NSString *)filename {
+    if ((self = [super initWithFile:filename])) {
+        self->score = 10;
+    }
+    return self;
+}
+
 + (EnemyItem *)enemy {
     return [EnemyItem spriteWithFile:@"enemy.png"];
 }

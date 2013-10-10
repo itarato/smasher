@@ -14,6 +14,7 @@
 @interface FlyingItem : CCSprite {
     float speed;
     id<FlyingItemDelegate> delegate;
+    int score;
 }
 
 - (void)die:(FlyingItemDeathType)deathType;
@@ -21,5 +22,6 @@
 + (FlyingItem *)flyingItemOfType:(FlyingItemType)type;
 
 @property (nonatomic, assign) id<FlyingItemDelegate> delegate;
+@property (atomic, readonly) int score;
 
 @end

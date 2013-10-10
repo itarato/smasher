@@ -26,7 +26,7 @@ float gameSpeedModifier = kGameSpeedNormal;
 
 @interface GameScreen ()
 
-- (void)findEnemyforPosition:(CGPoint)point;
+- (void)findEnemyforPosition:(CGPoint)point andHitType:(FlyingItemDeathType)hitType;
 
 - (void)startRound;
 
@@ -107,6 +107,7 @@ float gameSpeedModifier = kGameSpeedNormal;
 - (void)startRound {
     self->health = kGameMaxHealth;
     [self clearDisplay];
+    [self updateScore];
 }
 
 - (void)endGame {
@@ -132,7 +133,7 @@ float gameSpeedModifier = kGameSpeedNormal;
         [self->flyingItems addObject:item];
     }
     
-    [self findEnemyforPosition:self->player.position];
+    [self findEnemyforPosition:self->player.position andHitType:kFlyingItemPlayerHit];
 }
 
 - (void)onEnter {
@@ -150,11 +151,11 @@ float gameSpeedModifier = kGameSpeedNormal;
     [super onExit];
 }
 
-- (void)findEnemyforPosition:(CGPoint)point {
+- (void)findEnemyforPosition:(CGPoint)point andHitType:(FlyingItemDeathType)hitType {
     NSSet *_items = [NSSet setWithSet:self->flyingItems];
     for (id item in _items) {
         if (ccpDistance(point, ((FlyingItem *)item).position) < kGameFlyingItemHitDistance) {
-            [((FlyingItem *) item) die:kFlyingItemPlayerHit];
+            [((FlyingItem *) item) die:hitType];
         }
     }
 }
@@ -199,21 +200,14 @@ float gameSpeedModifier = kGameSpeedNormal;
         return;
     }
     
-    [self findEnemyforPosition:self->aimCross.position];
+    [self findEnemyforPosition:self->aimCross.position andHitType:kFlyingItemShoot];
     
     ShootPath *shootPath = [ShootPath shootPathFrom:self->player.position to:self->aimCross.position];
     [self addChild:shootPath];
 }
 
 - (void)dealloc {
-//    [self->scoreLabel release];
-//    [self->player release];
-//    [self->aimCross release];
-//    [self->controlPad release];
-//    [self->controlLayer release];
-//    [self->gameLayer release];
-
-    NSLog(@"DEALLOC GAME SCREEN");
+    NSLog(@"Dealloc %s", __FILE__);
     [self->flyingItems release];
     [super dealloc];
 }

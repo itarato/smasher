@@ -152,7 +152,6 @@
 		472E1A7117E2711B004601C4 /* JPalert_caps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 472E1A6A17E2711B004601C4 /* JPalert_caps@2x.png */; };
 		472E1A7317E2717C004601C4 /* libJoypad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 472E1A6317E2711B004601C4 /* libJoypad.a */; };
 		472E1A7517E271FC004601C4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 472E1A7417E271FC004601C4 /* Security.framework */; };
-		47302EA51804ACA800399F76 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 47302EA41804ACA800399F76 /* GameScene.m */; };
 		4736469817EF5FA500A4B111 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4736469717EF5FA500A4B111 /* button.png */; };
 		4736469B17EF5FF500A4B111 /* ControllerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4736469A17EF5FF500A4B111 /* ControllerLayer.m */; };
 		4736469E17EF67DA00A4B111 /* SimpleControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4736469D17EF67DA00A4B111 /* SimpleControlButton.m */; };
@@ -472,8 +471,6 @@
 		472E1A6917E2711B004601C4 /* JPalert_caps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JPalert_caps.png; sourceTree = "<group>"; };
 		472E1A6A17E2711B004601C4 /* JPalert_caps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JPalert_caps@2x.png"; sourceTree = "<group>"; };
 		472E1A7417E271FC004601C4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		47302EA31804ACA800399F76 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		47302EA41804ACA800399F76 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		4736469717EF5FA500A4B111 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		4736469917EF5FF500A4B111 /* ControllerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerLayer.h; path = ../ControllerLayer.h; sourceTree = "<group>"; };
 		4736469A17EF5FF500A4B111 /* ControllerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControllerLayer.m; path = ../ControllerLayer.m; sourceTree = "<group>"; };
@@ -569,8 +566,11 @@
 				47F9652917EAD8F90003CFED /* AimCross.m */,
 				4701D0CC17DEFC8B00D83883 /* AppDelegate.h */,
 				4701D0CD17DEFC8B00D83883 /* AppDelegate.m */,
+				476BC2EB17FB475300A3D704 /* Controller.h */,
+				476BC2EC17FB475300A3D704 /* Controller.m */,
 				4736469917EF5FF500A4B111 /* ControllerLayer.h */,
 				4736469A17EF5FF500A4B111 /* ControllerLayer.m */,
+				47C47C0917FAAF0800DB1A8B /* ControlTouchDelegate.h */,
 				4720D1F617E834FF00F47CD3 /* EnemyItem.h */,
 				4720D1F717E834FF00F47CD3 /* EnemyItem.m */,
 				4782D31517E6111700A9C9F8 /* FlyingItem.h */,
@@ -594,11 +594,6 @@
 				4736469D17EF67DA00A4B111 /* SimpleControlButton.m */,
 				47124DE517E7BC70004827CA /* SmasherTypes.h */,
 				4701D0C817DEFC8B00D83883 /* Supporting Files */,
-				47C47C0917FAAF0800DB1A8B /* ControlTouchDelegate.h */,
-				476BC2EB17FB475300A3D704 /* Controller.h */,
-				476BC2EC17FB475300A3D704 /* Controller.m */,
-				47302EA31804ACA800399F76 /* GameScene.h */,
-				47302EA41804ACA800399F76 /* GameScene.m */,
 			);
 			path = C2DSmasher;
 			sourceTree = "<group>";
@@ -1168,7 +1163,6 @@
 				4701CFE817DEFC8A00D83883 /* CCScene.m in Sources */,
 				4701CFEB17DEFC8A00D83883 /* CCScheduler.m in Sources */,
 				4701CFFD17DEFC8A00D83883 /* CCShaderCache.m in Sources */,
-				47302EA51804ACA800399F76 /* GameScene.m in Sources */,
 				4701D00017DEFC8A00D83883 /* ccShaders.m in Sources */,
 				4701D00317DEFC8A00D83883 /* CCSprite.m in Sources */,
 				4701D00617DEFC8A00D83883 /* CCSpriteBatchNode.m in Sources */,
