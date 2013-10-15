@@ -157,15 +157,18 @@
 		4736469E17EF67DA00A4B111 /* SimpleControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4736469D17EF67DA00A4B111 /* SimpleControlButton.m */; };
 		473C0FD117ECD0A70060E0C9 /* ShootPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 473C0FD017ECD0A70060E0C9 /* ShootPath.m */; };
 		476BC2ED17FB475300A3D704 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2EC17FB475300A3D704 /* Controller.m */; };
+		4779568E180D1FDF0071A8C4 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 4779568D180D1FDF0071A8C4 /* player.png */; };
+		47795690180D200F0071A8C4 /* meteorSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 4779568F180D200F0071A8C4 /* meteorSmall.png */; };
+		47795692180D204F0071A8C4 /* laserGreenShot.png in Resources */ = {isa = PBXBuildFile; fileRef = 47795691180D204F0071A8C4 /* laserGreenShot.png */; };
+		47795694180D23950071A8C4 /* aim_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 47795693180D23950071A8C4 /* aim_cross.png */; };
+		47795698180D26750071A8C4 /* starBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 47795697180D26750071A8C4 /* starBackground.png */; };
 		4782D30D17E5E40F00A9C9F8 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30A17E5E40F00A9C9F8 /* enemy.png */; };
 		4782D30E17E5E40F00A9C9F8 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30B17E5E40F00A9C9F8 /* cloud.png */; };
 		4782D30F17E5E40F00A9C9F8 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D30C17E5E40F00A9C9F8 /* food.png */; };
 		4782D31217E5EC2600A9C9F8 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4782D31117E5EC2600A9C9F8 /* Player.m */; };
-		4782D31417E5EEE300A9C9F8 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 4782D31317E5EEE300A9C9F8 /* player.png */; };
 		4782D31717E6111700A9C9F8 /* FlyingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4782D31617E6111700A9C9F8 /* FlyingItem.m */; };
 		4782D31A17E612FB00A9C9F8 /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4782D31917E612FB00A9C9F8 /* FoodItem.m */; };
 		47F9652A17EAD8F90003CFED /* AimCross.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F9652917EAD8F90003CFED /* AimCross.m */; };
-		47F9652C17EADA210003CFED /* aim_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 47F9652B17EADA210003CFED /* aim_cross.png */; };
 		47F9652F17EADDB60003CFED /* MoveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F9652E17EADDB60003CFED /* MoveController.m */; };
 /* End PBXBuildFile section */
 
@@ -480,12 +483,16 @@
 		473C0FD017ECD0A70060E0C9 /* ShootPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShootPath.m; path = ../ShootPath.m; sourceTree = "<group>"; };
 		476BC2EB17FB475300A3D704 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		476BC2EC17FB475300A3D704 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		4779568D180D1FDF0071A8C4 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
+		4779568F180D200F0071A8C4 /* meteorSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteorSmall.png; sourceTree = "<group>"; };
+		47795691180D204F0071A8C4 /* laserGreenShot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserGreenShot.png; sourceTree = "<group>"; };
+		47795693180D23950071A8C4 /* aim_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aim_cross.png; sourceTree = "<group>"; };
+		47795697180D26750071A8C4 /* starBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starBackground.png; sourceTree = "<group>"; };
 		4782D30A17E5E40F00A9C9F8 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		4782D30B17E5E40F00A9C9F8 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		4782D30C17E5E40F00A9C9F8 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
 		4782D31017E5EC2600A9C9F8 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		4782D31117E5EC2600A9C9F8 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		4782D31317E5EEE300A9C9F8 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		4782D31517E6111700A9C9F8 /* FlyingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyingItem.h; sourceTree = "<group>"; };
 		4782D31617E6111700A9C9F8 /* FlyingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyingItem.m; sourceTree = "<group>"; };
 		4782D31817E612FB00A9C9F8 /* FoodItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItem.h; sourceTree = "<group>"; };
@@ -494,7 +501,6 @@
 		47C47C0917FAAF0800DB1A8B /* ControlTouchDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlTouchDelegate.h; sourceTree = "<group>"; };
 		47F9652817EAD8F90003CFED /* AimCross.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AimCross.h; path = ../AimCross.h; sourceTree = "<group>"; };
 		47F9652917EAD8F90003CFED /* AimCross.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AimCross.m; path = ../AimCross.m; sourceTree = "<group>"; };
-		47F9652B17EADA210003CFED /* aim_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aim_cross.png; sourceTree = "<group>"; };
 		47F9652D17EADDB50003CFED /* MoveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoveController.h; path = ../MoveController.h; sourceTree = "<group>"; };
 		47F9652E17EADDB60003CFED /* MoveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoveController.m; path = ../MoveController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -601,9 +607,12 @@
 		4701CF3C17DEFC8900D83883 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				47795697180D26750071A8C4 /* starBackground.png */,
+				47795693180D23950071A8C4 /* aim_cross.png */,
+				47795691180D204F0071A8C4 /* laserGreenShot.png */,
+				4779568F180D200F0071A8C4 /* meteorSmall.png */,
+				4779568D180D1FDF0071A8C4 /* player.png */,
 				4736469717EF5FA500A4B111 /* button.png */,
-				47F9652B17EADA210003CFED /* aim_cross.png */,
-				4782D31317E5EEE300A9C9F8 /* player.png */,
 				4782D30A17E5E40F00A9C9F8 /* enemy.png */,
 				4782D30B17E5E40F00A9C9F8 /* cloud.png */,
 				4782D30C17E5E40F00A9C9F8 /* food.png */,
@@ -1082,6 +1091,7 @@
 				4701CF4417DEFC8900D83883 /* Default-Landscape~ipad.png in Resources */,
 				4701CF4617DEFC8900D83883 /* Icon-72.png in Resources */,
 				4701CF4817DEFC8900D83883 /* Icon-Small-50.png in Resources */,
+				47795692180D204F0071A8C4 /* laserGreenShot.png in Resources */,
 				4701CF4A17DEFC8900D83883 /* Icon-Small.png in Resources */,
 				4701CF4C17DEFC8900D83883 /* Icon-Small@2x.png in Resources */,
 				4701CF4E17DEFC8900D83883 /* Icon.png in Resources */,
@@ -1093,14 +1103,16 @@
 				472E1A6D17E2711B004601C4 /* JPalert_btn_dark@2x.png in Resources */,
 				472E1A6E17E2711B004601C4 /* JPalert_btn_light.png in Resources */,
 				472E1A6F17E2711B004601C4 /* JPalert_btn_light@2x.png in Resources */,
+				47795694180D23950071A8C4 /* aim_cross.png in Resources */,
+				47795698180D26750071A8C4 /* starBackground.png in Resources */,
+				47795690180D200F0071A8C4 /* meteorSmall.png in Resources */,
 				472E1A7017E2711B004601C4 /* JPalert_caps.png in Resources */,
 				472E1A7117E2711B004601C4 /* JPalert_caps@2x.png in Resources */,
 				4782D30D17E5E40F00A9C9F8 /* enemy.png in Resources */,
 				4782D30E17E5E40F00A9C9F8 /* cloud.png in Resources */,
+				4779568E180D1FDF0071A8C4 /* player.png in Resources */,
 				4736469817EF5FA500A4B111 /* button.png in Resources */,
 				4782D30F17E5E40F00A9C9F8 /* food.png in Resources */,
-				4782D31417E5EEE300A9C9F8 /* player.png in Resources */,
-				47F9652C17EADA210003CFED /* aim_cross.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -59,6 +59,12 @@ float gameSpeedModifier = kGameSpeedNormal;
     if (self) {
         CGSize win_size = [[CCDirector sharedDirector] winSize];
         
+        ccTexParams bgrTextureParams = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
+        CCSprite *bgr = [CCSprite spriteWithFile:@"starBackground.png" rect:CGRectMake(0.0f, 0.0f, win_size.width, win_size.height)];
+        [bgr.texture setTexParameters:&bgrTextureParams];
+        [bgr setPosition:ccp(win_size.width * 0.5, win_size.height * 0.5)];
+        [self addChild:bgr];
+        
         self->gameLayer = [CCNode node];
         self->controlLayer = [CCNode node];
         [self addChild:gameLayer];

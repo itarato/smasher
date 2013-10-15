@@ -18,7 +18,7 @@
 }
 
 + (EnemyItem *)enemy {
-    return [EnemyItem spriteWithFile:@"enemy.png"];
+    return [EnemyItem spriteWithFile:@"meteorSmall.png"];
 }
 
 @end

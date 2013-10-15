@@ -11,7 +11,7 @@
 @implementation FoodItem
 
 + (FoodItem *)food {
-    return [FoodItem spriteWithFile:@"food.png"];
+    return [FoodItem spriteWithFile:@"laserGreenShot.png"];
 }
 
 @end
