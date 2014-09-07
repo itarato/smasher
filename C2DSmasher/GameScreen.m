@@ -14,12 +14,13 @@
 #import "EnemyItem.h"
 #import "ShootPath.h"
 #import "Controller.h"
+#import "Background.h"
 
 #define kGameFlyingItemHitDistance 60.0f
 #define kGameSpeedSlow 0.3f
 #define kGameSpeedNormal 1.0f
-#define kGameMaxHealth 5
-#define kGameMaxLives 1
+#define kGameMaxHealth 50
+#define kGameMaxLives 3
 
 float gameSpeedModifier = kGameSpeedNormal;
 
@@ -59,10 +60,7 @@ float gameSpeedModifier = kGameSpeedNormal;
     if (self) {
         CGSize win_size = [[CCDirector sharedDirector] winSize];
         
-        ccTexParams bgrTextureParams = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
-        CCSprite *bgr = [CCSprite spriteWithFile:@"starBackground.png" rect:CGRectMake(0.0f, 0.0f, win_size.width, win_size.height)];
-        [bgr.texture setTexParameters:&bgrTextureParams];
-        [bgr setPosition:ccp(win_size.width * 0.5, win_size.height * 0.5)];
+        Background *bgr = [Background node];
         [self addChild:bgr];
         
         self->gameLayer = [CCNode node];

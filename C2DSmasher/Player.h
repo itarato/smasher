@@ -10,11 +10,15 @@
 #import "cocos2d.h"
 #import "SmasherTypes.h"
 #import "MoveController.h"
+#import "ControlTouchDelegate.h"
 
-@interface Player : CCSprite {
+@interface Player : CCNode <ControlTouchDelegate> {
     BOOL isMove;
     MoveController *moveController;
+    NSMutableDictionary *ships;
 }
+
+@property (nonatomic, retain) NSMutableDictionary *ships;
 
 - (void)controlStop;
 

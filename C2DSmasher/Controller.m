@@ -42,12 +42,6 @@
     }
 }
 
-//- (void)dealloc {
-//    [self->delegates dealloc];
-//    
-//    [super dealloc];
-//}
-
 #pragma mark - Button converters
 
 - (ControlBtn)controllerOfDpadButton:(JPDpadButton)button error:(BOOL *)error {

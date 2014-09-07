@@ -17,22 +17,22 @@
     if ((self = [super init])) {
         CGSize win_size = [CCDirector sharedDirector].winSize;
         
-        self->leftBtn = [SimpleControlButton simpleControlButtonWithImage:@"button.png" type:kControlBtnLeft];
+        self->leftBtn = [SimpleControlButton simpleControlButtonWithImage:@"btn_left.png" type:kControlBtnLeft];
         [self->leftBtn setPosition:ccp(50.0f, 150.0f)];
         
-        self->rightBtn = [SimpleControlButton simpleControlButtonWithImage:@"button.png" type:kControlBtnRight];
+        self->rightBtn = [SimpleControlButton simpleControlButtonWithImage:@"btn_right.png" type:kControlBtnRight];
         [self->rightBtn setPosition:ccp(250.0f, 150.0f)];
         
-        self->upBtn = [SimpleControlButton simpleControlButtonWithImage:@"button.png" type:kControlBtnUp];
+        self->upBtn = [SimpleControlButton simpleControlButtonWithImage:@"btn_up.png" type:kControlBtnUp];
         [self->upBtn setPosition:ccp(150.0f, 250.0f)];
         
-        self->downBtn = [SimpleControlButton simpleControlButtonWithImage:@"button.png" type:kControlBtnDown];
+        self->downBtn = [SimpleControlButton simpleControlButtonWithImage:@"btn_down.png" type:kControlBtnDown];
         [self->downBtn setPosition:ccp(150.0f, 50.0f)];
         
-        self->aBtn = [SimpleControlButton simpleControlButtonWithImage:@"button.png" type:kControlBtnA];
+        self->aBtn = [SimpleControlButton simpleControlButtonWithImage:@"btn_a.png" type:kControlBtnA];
         [self->aBtn setPosition:ccp(win_size.width - 100.0f, 100.0f)];
         
-        self->bBtn = [SimpleControlButton simpleControlButtonWithImage:@"button.png" type:kControlBtnB];
+        self->bBtn = [SimpleControlButton simpleControlButtonWithImage:@"btn_b.png" type:kControlBtnB];
         [self->bBtn setPosition:ccp(50.0f, 350.0f)];
         
         self->leftBtn.delegate = self;
